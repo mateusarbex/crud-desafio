@@ -11100,3 +11100,7 @@ a.text-dark:focus {
   }
 }
 
+.form-control .produto-changed {
+  color: red;
+}
+

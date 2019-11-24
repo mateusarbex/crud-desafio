@@ -6,3 +6,9 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.form-control{
+    .produto-changed{
+        color:red !important;
+    }
+}

@@ -24,12 +24,19 @@ class produtos extends Controller
         ]);
         return back();
     }
-    public function alterar(Request $request){
-        Produto::where('nome',$request->input('nome'))->update(['nome'=>$request->input('nome')]);
-        return back();
+    public function alterar($id_produto,Request $request){
+        if($request->input('nome')){
+           Produto::where('id_produto',$id_produto)->update(['nome'=>$request->input('nome')]);
         }
-    public function voltar(){
-        echo 'ok';
-        return;
+        if($request->input('preco')){
+            Produto::where('id_produto',$id_produto)->update(['preco'=>$request->input('preco')]);
+        }
+        $produtos = Produto::all();
+        return view('produto',['produtos'=>$produtos]);
+        }
+    public function delete($id_produto){
+        Produto::where('id_produto',$id_produto)->delete();
+        $produtos = Produto::all();
+        return view('produto',['produtos'=>$produtos]);
     }
 }
