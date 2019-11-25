@@ -1,6 +1,6 @@
-## CRUD DESAFIO
+# CRUD DESAFIO
 
-# Tecnologias utilizadas
+## Tecnologias utilizadas
 - Laravel 6.2
 - Node 12.3
     
