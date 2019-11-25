@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+        @yield('produto')
 <div class="row justify-content-center">
     <div class="col-md-16">
         <div class="card">
@@ -43,53 +44,25 @@
                                     <input onchange="document.querySelector('#nome-{{$item->nome}}')" name="nome" id="nome-{{$item->nome}}" class="form-control" readonly value={{$item->nome}}>
                                 </div>
                                 <div class="col-md-1">
-                                    <button type="button"  class="btn btn-primary"  onclick="
-                                    const input = document.querySelector('#nome-{{$item->nome}}');
-                                    input.removeAttribute('readonly');
-                                    input.focus(); 
-                                    input.addEventListener('blur',()=>{
-                                        input.setAttribute('readonly','readonly');
-                                        }
-                                    )
-                                    ">Alterar</button>
+                                    <button type="button"  class="btn btn-primary"  onclick="alterarProduto('{{$item->nome}}','nome')">Alterar</button>
                                 </div>  
                                 <div class="col-md-1">
-                                    <button type="submit" class="btn btn-success" onclick="
-                                    const input = document.querySelector('#nome-{{$item->nome}}');
-                                    input.removeAttribute('readonly');
-                                    ">Confirmar
+                                    <button type="submit" class="btn btn-success" onclick="confirmarProduto('{{$item->nome}}','nome')">Confirmar
                                 </div>
                                 <div class="col-1">
-                                    <button type="button" class="btn btn-warning" onclick="
-                                    const input = document.querySelector('#nome-{{$item->nome}}');
-                                    input.value='{{$item->nome}}'
-                                    ">Cancelar
+                                    <button type="button" class="btn btn-warning" onclick="cancelarProduto('{{$item->nome}}','{{$item->nome}}','nome')">Cancelar
                                 </div>
                                 <div class="col-md-2">
                                     <input name="preco"id="preco-{{$item->nome}}" type="number" step="0.01" class="form-control" readonly value={{$item->preco}}>
                                 </div>
                                 <div class="col-1">
-                                    <button type="button" class="btn btn-primary" onclick="
-                                    const input = document.querySelector('#preco-{{$item->nome}}');
-                                    input.removeAttribute('readonly');
-                                    input.focus(); 
-                                    input.addEventListener('blur',()=>{
-                                        input.setAttribute('readonly','readonly')
-                                        }
-                                    )
-                                    ">Alterar</button>  
+                                    <button type="button" class="btn btn-primary" onclick="alterarProduto('{{$item->nome}}','preco')">Alterar</button>  
                                 </div>
                                 <div class="col-md-1">
-                                    <button type="submit" class="btn btn-success" onclick="
-                                    const input = document.querySelector('#preco-{{$item->nome}}');
-                                    input.removeAttribute('readonly');
-                                    ">Confirmar
+                                    <button type="submit" class="btn btn-success" onclick="confirmarProduto('{{$item->nome}}','preco')">Confirmar
                                 </div>
                                 <div class="col-1">
-                                    <button type="button" class="btn btn-warning" onclick="
-                                    const input = document.querySelector('#preco-{{$item->nome}}');
-                                    input.value='{{$item->nome}}'
-                                    ">Cancelar
+                                    <button type="button" class="btn btn-warning" onclick="cancelarProduto('{{$item->nome}}',{{$item->preco}},'preco')">Cancelar
                                 </div>
                         </form> 
                         <form method="POST" action="{{route('produto.delete',$item->id_produto)}}">
@@ -105,11 +78,15 @@
                         <div class="row justify-content-center">
                         <div class="form-group" >Não há algum produto registrado</div>
                         </div>
-                        
                         @endif
-                        
                     </div>
                 </div>
         </div>
     </div>
+    
+@endsection
+@section('produto'){
+    <script src="js/app.js"></script>
+}
+    
 @endsection

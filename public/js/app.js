@@ -49381,6 +49381,29 @@ function searchCEP(ev) {
 }
 
 ;
+
+function alterarProduto(nome, tipo) {
+  var input = document.querySelector("#".concat(tipo, "-").concat(nome));
+  input.removeAttribute('readonly');
+  input.focus();
+  input.addEventListener('blur', function () {
+    input.setAttribute('readonly', 'readonly');
+  });
+}
+
+function confirmarProduto(nome, tipo) {
+  var input = document.querySelector("#".concat(tipo, "-").concat(nome));
+  input.removeAttribute('readonly');
+}
+
+function cancelarProduto(nome, value, tipo) {
+  var input = document.querySelector("#".concat(tipo, "-").concat(nome));
+  input.value = value;
+}
+
+window.alterarProduto = alterarProduto;
+window.confirmarProduto = confirmarProduto;
+window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
 
 /***/ }),

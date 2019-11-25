@@ -38,4 +38,26 @@ function searchCEP(ev){
     }).catch(error=>
         console.log(error))
 };
+function alterarProduto(nome,tipo){
+    const input = document.querySelector(`#${tipo}-${nome}`);
+    input.removeAttribute('readonly');
+    input.focus(); 
+    input.addEventListener('blur',()=>{
+        input.setAttribute('readonly','readonly');
+        }
+    )
+
+}
+function confirmarProduto(nome,tipo){
+    const input = document.querySelector(`#${tipo}-${nome}`);
+    input.removeAttribute('readonly');
+
+}
+function cancelarProduto(nome,value,tipo){
+    const input = document.querySelector(`#${tipo}-${nome}`);
+    input.value=value
+}
+window.alterarProduto = alterarProduto;
+window.confirmarProduto = confirmarProduto;
+window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
