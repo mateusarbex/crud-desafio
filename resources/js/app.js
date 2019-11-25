@@ -30,11 +30,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 function searchCEP(ev){
-    console.log(ev)
-    console.log(`https://viacep.com.br/ws/${ev.value}/json`)
     axios.get(`https://viacep.com.br/ws/${ev.value}/json`).then(end=>{
         document.querySelector('#rua').value = end.data.logradouro
-        console.log(end)
     }).catch(error=>
         console.log(error))
 };
@@ -48,6 +45,10 @@ function alterarProduto(nome,tipo){
     )
 
 }
+function alterado(nome,tipo){
+    const input = document.querySelector(`#${tipo}-${nome}`);
+    input.classList.add('alterado')
+}
 function confirmarProduto(nome,tipo){
     const input = document.querySelector(`#${tipo}-${nome}`);
     input.removeAttribute('readonly');
@@ -55,9 +56,11 @@ function confirmarProduto(nome,tipo){
 }
 function cancelarProduto(nome,value,tipo){
     const input = document.querySelector(`#${tipo}-${nome}`);
+    input.classList.remove('alterado')
     input.value=value
 }
 window.alterarProduto = alterarProduto;
 window.confirmarProduto = confirmarProduto;
 window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
+window.alterado = alterado;

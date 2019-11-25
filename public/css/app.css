@@ -11100,7 +11100,16 @@ a.text-dark:focus {
   }
 }
 
-.form-control .produto-changed {
-  color: red !important;
+input[type=number] {
+  -webkit-appearance: none !important;
+  -moz-appearance: textfield !important;
+}
+
+.text-align-center {
+  text-align: center !important;
+}
+
+.alterado {
+  border-color: #f3e95f;
 }
 

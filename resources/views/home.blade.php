@@ -17,15 +17,15 @@
                             </div>
                             <div class="col-md-3">
                                 <label for={{$item->vendendor_responsavel_nome}}>Vendendor Responsável</label>
-                                <input name={{$item->vendendor_responsavel_nome}} class="form-control" readonly value={{$item->vendendor_responsavel_nome}} >
+                                <div  name={{$item->vendendor_responsavel_nome}} class="form-control" readonly  >{{$item->vendendor_responsavel_nome}}</div>
                             </div>
                             <div class="col-md-2">
                                     <label for={{$item->valor}}>Total da compra</label>
-                                    <input name={{$item->valor}} class="form-control" readonly value={{$item->valor}} >
+                                    <input name={{$item->valor}} class="form-control text-align-center" readonly value={{$item->valor}} >
                             </div>
                             <div class="col-md-2">
                                     <label for={{$item->id_venda}}>Data da venda</label>
-                                    <input name={{$item->id_venda}} class="form-control" readonly value={{$item->created_at}} >
+                                    <input name={{$item->id_venda}} class="form-control text-align-center" readonly value={{$item->created_at}} >
                             </div>
 
                         </div>

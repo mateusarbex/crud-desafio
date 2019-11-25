@@ -49370,11 +49370,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 function searchCEP(ev) {
-  console.log(ev);
-  console.log("https://viacep.com.br/ws/".concat(ev.value, "/json"));
   axios.get("https://viacep.com.br/ws/".concat(ev.value, "/json")).then(function (end) {
     document.querySelector('#rua').value = end.data.logradouro;
-    console.log(end);
   })["catch"](function (error) {
     return console.log(error);
   });
@@ -49391,6 +49388,11 @@ function alterarProduto(nome, tipo) {
   });
 }
 
+function alterado(nome, tipo) {
+  var input = document.querySelector("#".concat(tipo, "-").concat(nome));
+  input.classList.add('alterado');
+}
+
 function confirmarProduto(nome, tipo) {
   var input = document.querySelector("#".concat(tipo, "-").concat(nome));
   input.removeAttribute('readonly');
@@ -49398,6 +49400,7 @@ function confirmarProduto(nome, tipo) {
 
 function cancelarProduto(nome, value, tipo) {
   var input = document.querySelector("#".concat(tipo, "-").concat(nome));
+  input.classList.remove('alterado');
   input.value = value;
 }
 
@@ -49405,6 +49408,7 @@ window.alterarProduto = alterarProduto;
 window.confirmarProduto = confirmarProduto;
 window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
+window.alterado = alterado;
 
 /***/ }),
 
