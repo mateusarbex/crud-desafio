@@ -28,7 +28,7 @@ class vendas extends Controller
             $total = $total + ($item['preco']*$item['quantidade']);
         }
         return Venda::create([
-            'numero_venda'=>$id_vendendor . Venda::last()->id_venda,
+            'numero_venda'=>$id_vendendor,
             'valor'=>$total,
             'vendendor_responsavel'=>$id_vendendor
         ]);
