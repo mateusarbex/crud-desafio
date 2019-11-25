@@ -34,9 +34,11 @@
                         @endif
                         
                         <div class="card-body text-align-center">
+                            
                             <div>
-                                <button class="btn btn-primary btn-lg">Ver relatório de vendas</button>
+                                <a  href={{route('relatorio',Auth::user()->id)}} type="submit" class="btn btn-primary btn-lg">Ver relatório de vendas</a>
                             </div>
+                         
                     </div>
                 </div>  
             </div>

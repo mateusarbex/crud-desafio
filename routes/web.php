@@ -22,4 +22,6 @@ Route::get('/produto/{id_produto}', 'produtos@index')->name('produto.id');
 Route::delete('/produto/{id_produto}','produtos@delete')->name('produto.delete');
 Route::get('/venda','vendas@index')->name('venda');
 Route::post('/venda/{id_vendendor}','vendas@criar')->name('venda.criar');
+Route::get('/relatorio/{id_vendendor}','relatorio@createRelatorio')->name('relatorio');
+Route::get('/downloadPDF/{id_venda}','relatorio@downloadPDF');
 

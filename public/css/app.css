@@ -11113,3 +11113,15 @@ input[type=number] {
   border-color: #f3e95f;
 }
 
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}
+
