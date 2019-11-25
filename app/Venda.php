@@ -15,7 +15,7 @@ class Venda extends Model
     protected $fillable = [
         'numero_venda','valor','vendendor_responsavel'
     ];
-
+    protected $primaryKey = 'id_venda';
     public $timestamps = true;   
     //
 }

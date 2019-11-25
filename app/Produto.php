@@ -11,5 +11,6 @@ class Produto extends Model
     protected $fillable = [
         'nome','preco'
     ];
+    protected $primaryKey = 'id_produto';
     public $timestamps = true;   
 }
