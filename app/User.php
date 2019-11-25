@@ -5,11 +5,14 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Venda;
 class User extends Authenticatable
 {
     use Notifiable;
 
+    public function venda(){
+      return  $this->hasMany('App\Venda');
+    }
     /**
      * The attributes that are mass assignable.
      *

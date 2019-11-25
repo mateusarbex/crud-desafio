@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Venda extends Model
 {
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+    public function produto(){
+        return $this->hasMany('App\Produto');
+    }
+    protected $fillable = [
+        'numero_venda','valor'
+    ];
+
+    public $timestamps = true;   
     //
 }

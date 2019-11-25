@@ -12,12 +12,12 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label for="nome" class="col-sm-1 col-form-label text-md-left">{{ __('Nome') }}</label>
+                        <label for="nome" class="col-sm-2 col-form-label text-md-left">{{ __('Nome') }}</label>
 
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus>
                         </div>
-                        <label for="preco" class="col-md-1 col-form-label text-md-left">{{ __('Preço') }}</label>
+                        <label for="preco" class="col-md-2 col-form-label text-md-left">{{ __('Preço') }}</label>
 
                         <div class="col-md-3">
                             <input id="preco" type="number" step="0.01"   class="form-control @error('preco') is-invalid @enderror" name="preco" value="{{ old('preco') }}" required autocomplete="preco" autofocus>
@@ -102,8 +102,8 @@
                         </form>
                         @endforeach
                         @else
-                        <div class="row">
-                        <h3 class="col-lg-20 center">Não há algum produto registrado</h3>
+                        <div class="row justify-content-center">
+                        <div class="form-group" >Não há algum produto registrado</div>
                         </div>
                         
                         @endif

@@ -49351,6 +49351,7 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49368,9 +49369,19 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app'
-});
+function searchCEP(ev) {
+  console.log(ev);
+  console.log("https://viacep.com.br/ws/".concat(ev.value, "/json"));
+  axios.get("https://viacep.com.br/ws/".concat(ev.value, "/json")).then(function (end) {
+    document.querySelector('#rua').value = end.data.logradouro;
+    console.log(end);
+  })["catch"](function (error) {
+    return console.log(error);
+  });
+}
+
+;
+window.searchCEP = searchCEP;
 
 /***/ }),
 
