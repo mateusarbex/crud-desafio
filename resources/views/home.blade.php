@@ -9,6 +9,28 @@
                     <div class="card">
                         <div class="card-header col-md-12 ">{{ __('Vendas realizadas') }}</div>
                         @if(count($vendas)>0)
+                        @foreach ($vendas as $item)
+                            <div class="row" style="margin:10px;">
+                                <div class="col-md-2">
+                                <label for={{$item->numero_venda}}>Número da venda</label>
+                                <input name={{$item->numero_venda}} class="form-control" readonly value={{$item->numero_venda}}>
+                            </div>
+                            <div class="col-md-3">
+                                <label for={{$item->vendendor_responsavel_nome}}>Vendendor Responsável</label>
+                                <input name={{$item->vendendor_responsavel_nome}} class="form-control" readonly value={{$item->vendendor_responsavel_nome}} >
+                            </div>
+                            <div class="col-md-2">
+                                    <label for={{$item->valor}}>Total da compra</label>
+                                    <input name={{$item->valor}} class="form-control" readonly value={{$item->valor}} >
+                            </div>
+                            <div class="col-md-2">
+                                    <label for={{$item->id_venda}}>Data da venda</label>
+                                    <input name={{$item->id_venda}} class="form-control" readonly value={{$item->created_at}} >
+                            </div>
+
+                        </div>
+                            
+                        @endforeach
                         @else
                         <div class="col-md-12 justify-content-center" style="text-align:center;margin-top:20px;">Não há vendas realizadas</div>
                         @endif

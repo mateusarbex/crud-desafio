@@ -16,8 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/teste' , function (){
-    echo 'ok';
-    return ;
-});
+Route::get('vendas/{id_vendendor}','vendas@vendendores')->name('venda.vendendor');
+
 

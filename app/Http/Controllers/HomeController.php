@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Venda;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $vendas = Venda::all();
+        foreach($vendas as $venda){
+            $user = User::find($venda->vendendor_responsavel);
+            $venda->vendendor_responsavel_nome = $user->nome;
+        }
         return view('home',['vendas'=>$vendas]);
     }
 }
