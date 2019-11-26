@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'postmaster@sandbox6482c129cf8c438cbee097410778f715.mailgun.org'),
-        'name' => env('MAIL_FROM_NAME', 'a17cffcfb8b4ed53d112fa022edea903-e470a504-4f9d2cee'),
+        'name' => env('MAIL_FROM_NAME', '13e29471d64f240150070968002a4bd8-e470a504-2c75a43a'),
     ],
 
     /*
