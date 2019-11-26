@@ -56,10 +56,10 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'postmaster@sandbox6482c129cf8c438cbee097410778f715.mailgun.org'),
-        'name' => env('MAIL_FROM_NAME', '13e29471d64f240150070968002a4bd8-e470a504-2c75a43a'),
+        'address' => env('MAIL_FROM_ADDRESS', 'postmaster@sandbox6482c129cf8csandbox6482c129cf8c438cbee097410778f715438cbee097410778f715.mailgun.org'),
+        'name' => env('MAIL_FROM_NAME', 'Postmaster'),
     ],
-
+ZZ
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
