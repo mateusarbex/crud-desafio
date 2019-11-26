@@ -13,7 +13,7 @@ class Venda extends Model
         return $this->hasMany('App\Produto');
     }
     protected $fillable = [
-        'numero_venda','valor','vendendor_responsavel'
+        'numero_venda','valor','vendendor_responsavel','cliente'
     ];
     protected $primaryKey = 'id_venda';
     public $timestamps = true;   

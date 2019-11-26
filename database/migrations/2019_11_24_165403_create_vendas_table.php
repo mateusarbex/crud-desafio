@@ -18,6 +18,7 @@ class CreateVendasTable extends Migration
             $table->integer('numero_venda');
             $table->unsignedInteger('vendendor_responsavel');
             $table->float('valor');
+            $table->string('cliente');
             $table->foreign('vendendor_responsavel')->references('id')->on('users');
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Produto;
 use App\Venda;
+use App\Venda_Produto;
 use App\User;
 class vendas extends Controller
 {
@@ -20,18 +21,43 @@ class vendas extends Controller
         $compra = array( );
         $total = 0;
         $produtos = Produto::all();
+        $id = Venda::orderBy('id_venda','desc')->first();
+        $numero = 0;
+        $id?$numero = $id->id_venda+1:1;
         foreach($produtos as $item){
-            array_push($compra,['nome'=>$item->nome,'preco'=>$item->preco,'quantidade'=>$request->input($item->id_produto . '-qtd')]);
+            if($request->input($item->id_produto. '-qtd')>0){
+                array_push($compra,['produto'=>$item->id_produto,'nome'=>$item->nome,'preco'=>$item->preco,'quantidade'=>$request->input($item->id_produto . '-qtd')]);
+            }
 
         }
         foreach($compra as $item){
             $total = $total + ($item['preco']*$item['quantidade']);
         }
-        return Venda::create([
-            'numero_venda'=>$id_vendendor,
-            'valor'=>$total,
-            'vendendor_responsavel'=>$id_vendendor
+        if($id){
+            $venda = Venda::create([
+                'numero_venda'=>$numero+1   ,
+                'valor'=>$total,
+                'vendendor_responsavel'=>$id_vendendor,
+                'cliente' =>$request->input('cliente')
         ]);
+        }
+        else{
+            $venda = Venda::create([
+                'numero_venda'=>$numero+1,
+                'valor'=>$total,
+                'vendendor_responsavel'=>$id_vendendor,
+                'cliente' =>$request->input('cliente')
+            ]);
+
+        }
+        foreach($compra as $item){
+            Venda_Produto::create([
+                'venda'=>$venda->id_venda,
+                'produto'=>$item['produto'],
+                'qtd'=>$item['quantidade']
+            ]);
+        }
+        return $venda->id_venda;
     }
     public function vendendores($id_vendendor){
         return User::where('id',$id_vendendor);
