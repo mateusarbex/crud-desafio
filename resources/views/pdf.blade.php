@@ -20,7 +20,7 @@
                 <tr>
                   <th>Número da venda</th>
                   <th>Cliente</th>
-                  <th>Total</th>
+                  <th>Valor</th>
                   <th>Data</th>
                   <th>Horario</th>
                 </tr>
@@ -37,6 +37,6 @@
                 </tr>
 
               </table>
-                  <h4>Total: <span>{{$total}} R$</span></h4>
+                  <h4>Total das vendas: <span>{{$total}} R$</span></h4>
   </body>
 </html>
