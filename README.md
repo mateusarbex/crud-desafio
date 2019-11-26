@@ -18,7 +18,7 @@ Um CRUD básico para um sistema de vendas de produtos junto com cadastramento de
 ## Comandos 
 Para montar o servidor local
 
-    php artisan serve
+    php artisan server
 
    Para modificar ou alterar dados da database diretamente
    

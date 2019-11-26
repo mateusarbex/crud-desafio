@@ -15,15 +15,19 @@
                                 <label for={{$item->numero_venda}}>Número da venda</label>
                                 <input name={{$item->numero_venda}} class="form-control" readonly value={{$item->numero_venda}}>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                    <label for={{$item->cliente}}>Cliente</label>
+                                    <div  name={{$item->cliente}} class="form-control" readonly  >{{$item->cliente}}</div>
+                                </div>
+                            <div class="col-md-3">
                                 <label for={{$item->vendendor_responsavel_nome}}>Vendendor Responsável</label>
                                 <div  name={{$item->vendendor_responsavel_nome}} class="form-control" readonly  >{{$item->vendendor_responsavel_nome}}</div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label for={{$item->valor}}>Total da venda (R$)</label>
                                 <input name={{$item->valor}} class="form-control text-align-center" readonly value={{$item->valor}} >
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <label for={{$item->id_venda}}>Data da venda</label>
                                 <input name={{$item->id_venda}} class="form-control text-align-center" readonly value={{$item->created_at}} >
                             </div>

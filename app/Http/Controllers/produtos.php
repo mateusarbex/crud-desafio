@@ -41,4 +41,13 @@ class produtos extends Controller
         $produtos = Produto::all();
         return view('produto',['produtos'=>$produtos]);
     }
+    public function relatorio(){
+        $total_prod = array();
+        $produtos = Produto::all();
+        foreach($produtos as $prod){
+            $result = Venda_Produto::where('produto',$prod->id_produto)->count('qtd');
+            array_push($total_prod,['nome'=>$prod->nome,'total',$result]);
+        }
+        return $total_prod;  
+    }
 }

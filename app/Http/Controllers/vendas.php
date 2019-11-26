@@ -57,7 +57,7 @@ class vendas extends Controller
                 'qtd'=>$item['quantidade']
             ]);
         }
-        return $venda->id_venda;
+        return back();
     }
     public function vendendores($id_vendendor){
         return User::where('id',$id_vendendor);

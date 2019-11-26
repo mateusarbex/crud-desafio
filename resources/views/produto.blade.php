@@ -3,10 +3,12 @@
 @section('content')
 <div class="container">
         @yield('produto')
+        <a style="margin-bottom:20px;" href="{{ route('produto.relatorio') }}" class="btn btn-primary">Relatorio dos produtos</a>
     <div class="row justify-content-center">
+            
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Criar novo produto') }}</div>
+                <div class="card-header">{{ __('Criar novo produto') }}<input type="search" id="search" onblur="search(document.querySelector('#search'))" onkeypress="search(document.querySelector('#search'))" style="border-radius:5px;" placeholder=" Pesquisar Produto" class="float-right"></div>
                     <div class="card-body">
                     <form method="POST" id="form-criar"action="{{ route('produto.criar') }}">
                     @csrf
@@ -27,10 +29,10 @@
                 <div class="card">
                     <div class="card-header">{{ __('Produtos existentes') }}
                     </div>        
-                    <div class="card-body">
+                    <div id="product" class="card-body">
                         @if(count($produtos)>0)
                         @foreach ($produtos as $item)
-                        <form style="border:solid thin lightgray;border-radius:10px;padding:20px;margin-bottom:10px;" id="form-{{$item->nome}}" method="POST" action="{{route('produto.alterar',$item->id_produto)}}">
+                        <form class="form-product" style="border:solid thin lightgray;border-radius:10px;padding:20px;margin-bottom:10px;" id="form-{{$item->nome}}" method="POST" action="{{route('produto.alterar',$item->id_produto)}}">
                          @csrf
                             <div class="form-group row align-items-end">
                                 <div class="col-md-3">
@@ -65,7 +67,7 @@
                             </div>
                            
                             </form> 
-                            <form onsubmit="return confirm('Deseja apagar o produto {{$item->nome}}?')" method="POST" action="{{route('produto.delete',$item->id_produto)}}">
+                             <form class="form-product" id="form-{{$item->nome}}-delete" onsubmit="return confirm('Deseja apagar o produto {{$item->nome}}?')" method="POST" action="{{route('produto.delete',$item->id_produto)}}">
                                     @method('DELETE')
                                     @csrf
                                     <div style="margin-top:20px" class="form-group row"> 

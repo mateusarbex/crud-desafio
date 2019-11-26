@@ -45,6 +45,26 @@ function alterarProduto(nome,tipo){
     )
 
 }
+function search(ev){
+    const keyword = ev.value
+   const forms = document.querySelectorAll('.form-product')
+   console.log(forms)
+   const product = document.querySelector('#product')
+   const found = []
+   if(keyword){
+   for(let form of forms){
+       if(!form.id.startsWith(`form-${keyword}`)){
+            form.hidden = true
+       }
+   }
+   }
+   else{
+    for(let form of forms){
+             form.hidden = false
+        }
+   }
+
+    }
 function alterado(nome,tipo){
     const input = document.querySelector(`#${tipo}-${nome}`);
     input.classList.add('alterado')
@@ -64,3 +84,4 @@ window.confirmarProduto = confirmarProduto;
 window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
 window.alterado = alterado;
+window.search = search;
