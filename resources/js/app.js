@@ -8,6 +8,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 window.axios = require('axios');
+if (process.env.MIX_ENV_MODE === 'production') {
+    Vue.config.devtools = false;
+    Vue.config.debug = false;
+    Vue.config.silent = true; 
+}
 
 /**
  * The following block of code may be used to automatically register your
@@ -31,10 +36,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 function searchCEP(ev){
     axios.get(`https://viacep.com.br/ws/${ev.value}/json`).then(end=>{
-        document.querySelector('#rua').value = end.data.logradouro
-    }).catch(error=>
-        console.log(error))
-};
+        if(!end.data.erro){
+            document.querySelector('#rua').value = end.data.logradouro
+        }
+        else{
+            document.querySelector('#rua').value = 'Não foi possível encontrar endereço'
+        }
+        
+    }).catch(error=>{
+        document.querySelector('#rua').value = 'Não foi possível encontrar endereço'
+    }
+)};
 function alterarProduto(nome,tipo){
     const input = document.querySelector(`#${tipo}-${nome}`);
     input.removeAttribute('readonly');
@@ -47,20 +59,17 @@ function alterarProduto(nome,tipo){
 }
 function search(ev){
     const keyword = ev.value
-   const forms = document.querySelectorAll('.form-product')
-   console.log(forms)
-   const product = document.querySelector('#product')
-   const found = []
-   if(keyword){
-   for(let form of forms){
-       if(!form.id.startsWith(`form-${keyword}`)){
-            form.hidden = true
-       }
-   }
+    const forms = document.querySelectorAll('.form-product')
+    if(keyword){
+        for(let form of forms){
+            if(!form.id.startsWith(`form-${keyword}`)){
+                form.hidden = true
+            }
+        }
    }
    else{
-    for(let form of forms){
-             form.hidden = false
+        for(let form of forms){
+            form.hidden = false
         }
    }
 

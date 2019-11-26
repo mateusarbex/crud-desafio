@@ -49343,7 +49343,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
+/* WEBPACK VAR INJECTION */(function(process) {/**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
@@ -49352,6 +49352,12 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+if (process.env.MIX_ENV_MODE === 'production') {
+  Vue.config.devtools = false;
+  Vue.config.debug = false;
+  Vue.config.silent = true;
+}
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49362,6 +49368,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -49371,9 +49378,13 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 function searchCEP(ev) {
   axios.get("https://viacep.com.br/ws/".concat(ev.value, "/json")).then(function (end) {
-    document.querySelector('#rua').value = end.data.logradouro;
+    if (!end.data.erro) {
+      document.querySelector('#rua').value = end.data.logradouro;
+    } else {
+      document.querySelector('#rua').value = 'Não foi possível encontrar endereço';
+    }
   })["catch"](function (error) {
-    return console.log(error);
+    document.querySelector('#rua').value = 'Não foi possível encontrar endereço';
   });
 }
 
@@ -49391,9 +49402,6 @@ function alterarProduto(nome, tipo) {
 function search(ev) {
   var keyword = ev.value;
   var forms = document.querySelectorAll('.form-product');
-  console.log(forms);
-  var product = document.querySelector('#product');
-  var found = [];
 
   if (keyword) {
     var _iteratorNormalCompletion = true;
@@ -49471,6 +49479,7 @@ window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
 window.alterado = alterado;
 window.search = search;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 

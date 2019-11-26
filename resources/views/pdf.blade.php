@@ -14,7 +14,7 @@
     <title></title>
   </head>
   <body>
-    <div style="text-align:center;"><h1>{{$vendendor->nome}}<h1></div>
+    <div style="text-align:center;"><h2>{{$vendendor->nome}}<h2></div>
     <h3>{{$mes}}</h3>
         <table style="width:100%">
                 <tr>

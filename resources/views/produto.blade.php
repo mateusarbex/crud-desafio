@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
         @yield('produto')
-        <a style="margin-bottom:20px;" href="{{ route('produto.relatorio') }}" class="btn btn-primary">Relatorio dos produtos</a>
+        <a style="margin-bottom:20px;" disabled={{count($produtos)>0}} href="{{ route('produto.relatorio') }}" class="btn btn-primary">Relatorio dos produtos</a>
     <div class="row justify-content-center">
             
         <div class="col-md-12">
@@ -32,7 +32,7 @@
                     <div id="product" class="card-body">
                         @if(count($produtos)>0)
                         @foreach ($produtos as $item)
-                        <form class="form-product" style="border:solid thin lightgray;border-radius:10px;padding:20px;margin-bottom:10px;" id="form-{{$item->nome}}" method="POST" action="{{route('produto.alterar',$item->id_produto)}}">
+                        <form class="form-product" style="border:solid thin lightgray;border-bottom:none;border-radius:10px 10px 0 0;padding:20px;" id="form-{{$item->nome}}" method="POST" action="{{route('produto.alterar',$item->id_produto)}}">
                          @csrf
                             <div class="form-group row align-items-end">
                                 <div class="col-md-3">
@@ -54,26 +54,29 @@
                                     <button type="button" class="btn btn-warning" onclick="cancelarProduto('{{$item->nome}}',{{$item->preco}},'preco')">Cancelar
                                 </div>  
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-2">
-                                    <label for='data-criada'>Data de criação</label>
-                                    <input name='data-criada' class="form-control" disabled value={{$item->created_at}}>
-                                </div>
-                                <div class="col-md-2">
-                                    <label for='data-alterada'>Alterado em</label>
-                                    <input name='data-alterada' class="form-control" disabled value={{$item->updated_at}}>
-                                </div>
-                                
-                            </div>
+                        </form> 
+                            
                            
-                            </form> 
-                             <form class="form-product" id="form-{{$item->nome}}-delete" onsubmit="return confirm('Deseja apagar o produto {{$item->nome}}?')" method="POST" action="{{route('produto.delete',$item->id_produto)}}">
+                           
+                             <form class="form-product" style="border:solid thin lightgray;border-top:none;overflow:visible;border-radius:0px 0px 10px 10px;padding:20px;margin-bottom:10px;" id="form-{{$item->nome}}-delete" onsubmit="return confirm('Deseja apagar o produto {{$item->nome}}?')" method="POST" action="{{route('produto.delete',$item->id_produto)}}">
                                     @method('DELETE')
                                     @csrf
-                                    <div style="margin-top:20px" class="form-group row"> 
-                                        <div class="col-md-12 text-align-center">
-                                        <button type="submit" style="width:40%;" class="btn btn-danger btn-lg">Apagar</button>
-                                    </div>  
+                                    <div class="form-group row align-items-end">
+                                        <div class="col-md-2">
+                                            <label for='data-criada'>Data de criação</label>
+                                            <input name='data-criada' class="form-control" disabled value={{$item->created_at}}>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for='data-alterada'>Alterado em</label>
+                                            <input name='data-alterada' class="form-control" disabled value={{$item->updated_at}}>
+                                        </div>
+                                        <div  class="col-md-4"> 
+                                            <div class="col-md-12 text-align-center">
+                                            <button type="submit" style="width:40%;" class="btn btn-danger btn-lg">Apagar</button>
+                                        </div>  
+                                        
+                                    </div>
+                                    
                             </div>
                         
                             </form>
