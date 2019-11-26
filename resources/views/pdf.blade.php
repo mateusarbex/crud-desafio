@@ -19,6 +19,7 @@
         <table style="width:100%">
                 <tr>
                   <th>Número da venda</th>
+                  <th>Cliente</th>
                   <th>Total</th>
                   <th>Data</th>
                   <th>Horario</th>
@@ -26,6 +27,7 @@
                 @foreach($vendas as $venda)
                 <tr>
                     <td width="100">{{$venda->numero_venda}}</td>
+                    <td >{{$venda->cliente}}</td>
                     <td width="100">{{$venda->valor}}</td>
                     <td>{{$venda->data}}</td>
                     <td>{{$venda->horario}}</td>
