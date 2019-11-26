@@ -63,6 +63,8 @@
                                 </div>
                                 
                             </div>
+                           
+                            </form> 
                             <form onsubmit="return confirm('Deseja apagar o produto {{$item->nome}}?')" method="POST" action="{{route('produto.delete',$item->id_produto)}}">
                                     @method('DELETE')
                                     @csrf
@@ -70,8 +72,6 @@
                                         <div class="col-md-12 text-align-center">
                                         <button type="submit" style="width:40%;" class="btn btn-danger btn-lg">Apagar</button>
                                     </div>  
-                            </form> 
-                            
                             </div>
                         
                             </form>
