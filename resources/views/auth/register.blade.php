@@ -16,11 +16,12 @@
                             <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus>
+                                <input oninvalid="this.setCustomValidity('Preencha com seu nome')"
+                                oninput="this.setCustomValidity('')"  id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus>
 
                                 @error('nome')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Nome preenchido incorretamente</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -30,11 +31,11 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Endereço de E-mail') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input oninvalid="this.setCustomValidity('Preencha com seu E-mail')" oninput="this.setCustomValidity('')" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>E-mail já cadastrado</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -43,12 +44,8 @@
                             <label for="cep" class="col-md-4 col-form-label text-md-right">{{ __('CEP') }}</label>
 
                             <div class="col-md-4">
-                                <input id="cep" type="tel" pattern="[0-9]+" minlength="8" class="form-control @error('cep') is-invalid @enderror" name="cep" value="{{ old('cep') }}" required autocomplete="cep" autofocus>
-                                @error('cep')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input oninvalid="this.setCustomValidity('Coloque os números corretamente')" oninput="this.setCustomValidity('')" id="cep" type="tel" pattern="[0-9]+" minlength="8" class="form-control @error('cep') is-invalid @enderror" name="cep" value="{{ old('cep') }}" required autocomplete="cep" autofocus>
+                                
                             </div>
                             <button type="button" id="cep-search" onclick="searchCEP(document.querySelector('#cep'))" class="btn btn-primary">Procurar</button>
                         </div>
@@ -56,13 +53,7 @@
                             <label for="rua" class="col-md-4 col-form-label text-md-right">{{ __('Rua') }}</label>
 
                             <div class="col-md-6">
-                                <input id="rua" type="text" class="form-control @error('rua') is-invalid @enderror" name="rua" value="{{ old('rua') }}" required autocomplete="rua" autofocus>
-
-                                @error('rua')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Preencha com rua do seu endereço')" id="rua" type="text" class="form-control @error('rua') is-invalid @enderror" name="rua" value="{{ old('rua') }}" required autocomplete="rua" autofocus>
                             </div>
                         </div>
 
@@ -70,13 +61,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Senha precisa de no mínimo 6 caracteres')" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" minlength="6" required autocomplete="new-password">
                             </div>
                         </div>
 
@@ -84,7 +69,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirme sua senha') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input oninput="check(this)" id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         @yield('functions')

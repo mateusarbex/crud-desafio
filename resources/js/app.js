@@ -37,7 +37,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 function searchCEP(ev){
     axios.get(`https://viacep.com.br/ws/${ev.value}/json`).then(end=>{
         if(!end.data.erro){
-            document.querySelector('#rua').value = end.data.logradouro
+            const rua = document.querySelector('#rua')
+            rua.value = end.data.logradouro
+            rua.setCustomValidity('')
+            
         }
         else{
             document.querySelector('#rua').value = 'Não foi possível encontrar endereço'
@@ -56,6 +59,14 @@ function alterarProduto(nome,tipo){
         }
     )
 
+}
+function check(ev){
+    if(ev.value != document.querySelector('#password').value){
+        ev.setCustomValidity('As senhas não são iguais')
+    }
+    else{
+        ev.setCustomValidity('')
+    }
 }
 function search(ev){
     const keyword = ev.value
@@ -94,3 +105,4 @@ window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
 window.alterado = alterado;
 window.search = search;
+window.check = check;

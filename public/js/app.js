@@ -49379,7 +49379,9 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 function searchCEP(ev) {
   axios.get("https://viacep.com.br/ws/".concat(ev.value, "/json")).then(function (end) {
     if (!end.data.erro) {
-      document.querySelector('#rua').value = end.data.logradouro;
+      var rua = document.querySelector('#rua');
+      rua.value = end.data.logradouro;
+      rua.setCustomValidity('');
     } else {
       document.querySelector('#rua').value = 'Não foi possível encontrar endereço';
     }
@@ -49397,6 +49399,14 @@ function alterarProduto(nome, tipo) {
   input.addEventListener('blur', function () {
     input.setAttribute('readonly', 'readonly');
   });
+}
+
+function check(ev) {
+  if (ev.value != document.querySelector('#password').value) {
+    ev.setCustomValidity('As senhas não são iguais');
+  } else {
+    ev.setCustomValidity('');
+  }
 }
 
 function search(ev) {
@@ -49479,6 +49489,7 @@ window.cancelarProduto = cancelarProduto;
 window.searchCEP = searchCEP;
 window.alterado = alterado;
 window.search = search;
+window.check = check;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
