@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use App\Venda_Produto;
 
 class produtos extends Controller
 {
@@ -35,6 +36,7 @@ class produtos extends Controller
         return view('produto',['produtos'=>$produtos]);
         }
     public function delete($id_produto){
+        Venda_Produto::where('produto',$id_produto)->delete();
         Produto::where('id_produto',$id_produto)->delete();
         $produtos = Produto::all();
         return view('produto',['produtos'=>$produtos]);

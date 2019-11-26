@@ -30,7 +30,7 @@
                     <div class="card-body">
                         @if(count($produtos)>0)
                         @foreach ($produtos as $item)
-                        <form id="form-{{$item->nome}}" method="POST" action="{{route('produto.alterar',$item->id_produto)}}">
+                        <form style="border:solid thin lightgray;border-radius:10px;padding:20px;margin-bottom:10px;" id="form-{{$item->nome}}" method="POST" action="{{route('produto.alterar',$item->id_produto)}}">
                          @csrf
                             <div class="form-group row align-items-end">
                                 <div class="col-md-3">
@@ -46,7 +46,7 @@
                                     <label for='preco'>Preço</label>
                                     <input onchange="alterado('{{$item->nome}}','preco')" name="preco"id="preco-{{$item->nome}}" type="number" step="0.01" class="form-control" required minlength="1" readonly value={{$item->preco}}>
                                 </div>
-                                <div class="col-md-3" style="margin-left:5;margin-right:5; ">
+                                <div class="col-md-4" style="margin-left:5;margin-right:5; ">
                                     <button type="button" class="btn btn-primary" onclick="alterarProduto('{{$item->nome}}','preco')">Alterar
                                     <button type="submit" class="btn btn-success" onclick="confirmarProduto('{{$item->nome}}','preco')">Confirmar
                                     <button type="button" class="btn btn-warning" onclick="cancelarProduto('{{$item->nome}}',{{$item->preco}},'preco')">Cancelar
@@ -61,17 +61,21 @@
                                     <label for='data-alterada'>Alterado em</label>
                                     <input name='data-alterada' class="form-control" disabled value={{$item->updated_at}}>
                                 </div>
+                                
                             </div>
-                            </form> 
                             <form onsubmit="return confirm('Deseja apagar o produto {{$item->nome}}?')" method="POST" action="{{route('produto.delete',$item->id_produto)}}">
-                            @method('DELETE')
-                            @csrf
-                            <div class="form-group row"> 
-                                <div class="col-md-12 text-align-center">
-                                <button type="submit" class="btn btn-danger">Apagar</button>
-                            </div>  
-                            </div>
+                                    @method('DELETE')
+                                    @csrf
+                                    <div style="margin-top:20px" class="form-group row"> 
+                                        <div class="col-md-12 text-align-center">
+                                        <button type="submit" style="width:40%;" class="btn btn-danger btn-lg">Apagar</button>
+                                    </div>  
                             </form> 
+                            
+                            </div>
+                        
+                            </form>
+
                             @endforeach
                             @else
                                 <div class="row justify-content-center">
