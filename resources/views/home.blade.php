@@ -33,15 +33,17 @@
                             </div>
                         </div>      
                         @endforeach
+                        <div class="col-md-12 text-align-center">
+                            <a  href={{route('relatorio',Auth::user()->id)}} type="submit" class="btn btn-primary btn-lg">Ver relatório de vendas</a>
+                        </div>
                         @else
                         <div class="col-md-12 justify-content-center" style="text-align:center;margin-top:20px;">Não há vendas realizadas</div>
                         @endif
                         
                         <div class="card-body text-align-center">
                             
-                            <div>
-                                <a  href={{route('relatorio',Auth::user()->id)}} type="submit" class="btn btn-primary btn-lg">Ver relatório de vendas</a>
-                            </div>
+                                
+                            
                          
                     </div>
                 </div>  

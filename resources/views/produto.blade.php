@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
         @yield('produto')
-        <a style="margin-bottom:20px;" disabled={{count($produtos)>0}} href="{{ route('produto.relatorio') }}" class="btn btn-primary">Relatorio dos produtos</a>
+        <a style="margin-bottom:20px;" hidden{{count($produtos)>0}} disabled={{count($produtos)>0}} href="{{ route('produto.relatorio') }}" class="btn btn-primary">Relatorio dos produtos</a>
     <div class="row justify-content-center">
             
         <div class="col-md-12">
