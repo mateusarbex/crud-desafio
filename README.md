@@ -3,7 +3,7 @@
 
 
 Um CRUD básico para um sistema de vendas de produtos junto com cadastramento de usuário.
- [Link para o deploy do CRUD no Heroku](crud-desafio.herokuapp.com/)
+Link para o deploy do CRUD no Heroku: (crud-desafio.herokuapp.com/)
 
 ## Tecnologias utilizadas
 
