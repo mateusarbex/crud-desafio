@@ -16,7 +16,8 @@
                             <label for="cliente" class="col-md-4 col-form-label text-md-right">{{ __('Nome do Cliente') }}</label>
             
                             <div class="col-md-6">
-                                <input id="cliente" type="text" class="form-control" placeholder="Cliente" name="cliente" value="" required autocomplete="nome" autofocus>
+                                <input oninvalid="this.setCustomValidity('Diga o nome do cliente')"
+                                oninput="this.setCustomValidity('')" id="cliente" type="text" class="form-control" placeholder="Cliente" name="cliente" value="" required autocomplete="nome" autofocus>
                             </div>
                         </div>
                         <div class="card">

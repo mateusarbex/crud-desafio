@@ -15,11 +15,13 @@
                         <div class="form-group row">
                             <label for="nome" class="col-sm-2 col-form-label text-md-left">{{ __('Nome') }}</label>
                             <div class="col-md-3">
-                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus>
+                                <input oninvalid="this.setCustomValidity('Preencha com o nome do produto')"
+                                oninput="this.setCustomValidity('')" id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus>
                             </div>
                             <label for="preco" class="col-md-2 col-form-label text-md-left">{{ __('Preço') }}</label>
                             <div class="col-md-3">
-                                <input id="preco" type="number" step="0.01"   class="form-control @error('preco') is-invalid @enderror" name="preco" value="{{ old('preco') }}" required autocomplete="preco" autofocus>
+                                <input oninvalid="this.setCustomValidity('Preencha com o preço do produto')"
+                                oninput="this.setCustomValidity('')" id="preco" type="number" step="0.01"   class="form-control @error('preco') is-invalid @enderror" name="preco" value="{{ old('preco') }}" required autocomplete="preco" autofocus>
                             </div>
                             <button class="btn btn-primary" type="submit">Criar</button>
                         </div>
