@@ -23,7 +23,7 @@ class vendas extends Controller
         $produtos = Produto::all();
         $id = Venda::orderBy('id_venda','desc')->first();
         $numero = 0;
-        $id?$numero = $id->id_venda+1:1;
+        $id?$numero = $id->id_venda:1;
         foreach($produtos as $item){
             if($request->input($item->id_produto. '-qtd')>0){
                 array_push($compra,['produto'=>$item->id_produto,'nome'=>$item->nome,'preco'=>$item->preco,'quantidade'=>$request->input($item->id_produto . '-qtd')]);
