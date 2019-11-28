@@ -69,7 +69,8 @@ function search(ev){
     const forms = document.querySelectorAll('.form-product')
     if(keyword){
         for(let form of forms){
-            if(!form.id.startsWith(`form-${keyword}`)){
+           form.id = form.id.toLowerCase()
+            if(!form.id.startsWith(`form-${keyword.toLowerCase()}`)){
                 form.hidden = true
             }
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Venda;
 use App\User;
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $vendas = Venda::all();
+        $vendas = DB::table('vendas')->simplePaginate(10);
         foreach($vendas as $venda){
             $user = User::find($venda->vendendor_responsavel);
             $venda->vendendor_responsavel_nome = $user->nome;

@@ -39,8 +39,14 @@
                         @else
                         <div class="col-md-12 justify-content-center" style="text-align:center;margin-top:20px;">Não há vendas realizadas</div>
                         @endif
-                        
+                       
                         <div class="card-body text-align-center">
+                        <div class="row">
+                                <div class="col-md-12 text-align-center"></div>
+                            
+                            <div class="col-md-12 text-align-center">{{$vendas->links()}}</div>
+                        </div>
+                            
                             
                                 
                             
