@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $vendas = DB::table('vendas')->simplePaginate(10);
+        $vendas = DB::table('vendas')->orderBy('numero_venda','desc')->simplePaginate(10);
         foreach($vendas as $venda){
             $user = User::find($venda->vendendor_responsavel);
             $venda->vendendor_responsavel_nome = $user->nome;
